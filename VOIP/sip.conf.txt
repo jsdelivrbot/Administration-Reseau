@@ -1,0 +1,11 @@
+
+[general]
+language=fr
+externip=54.37.65.108 ; ip source
+localnet=54.37.65.108
+localnet=172.17.0.1
+bindport=5060
+updbindaddr=0.0.0.0
+tcpbindaddr=0.0.0.0
+transport=udp
+srvlookup=yes

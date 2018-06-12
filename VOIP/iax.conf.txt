@@ -1,0 +1,11 @@
+
+[general]
+register => AST-SRV-2:1234@54.37.65.43
+
+[AST-SRV-1]
+type=friend
+host=54.37.65.43
+trunk=yes
+secret=1234
+context=interco-ast-1
+qualify=yes

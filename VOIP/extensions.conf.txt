@@ -1,0 +1,104 @@
+
+[general]
+static=yes
+writeprotect=no
+clearglobalvars=no
+
+[incoming]
+exten => contact,1,GoTo(direction, 1001, 1)
+
+; note: 30 => numéro unique du service comptable
+; redirige vers le premier numéro du bureau comptable disponible
+
+[secretaire]
+; exten => Numéro appelé par le contexte,Priorité, Applications ()
+exten => _0XXX,1,Dial(IAX2/trunk-woodytoys/${EXTEN})
+exten => _80XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _80XX,2,VoiceMail(${EXTEN}@ouvrier)
+exten => 30,1,Dial(SIP/1201&SIP/1301, 20)
+exten => 30,2,VoiceMail(${EXTEN}@comptables)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _70XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _70XX,2,VoiceMail(${EXTEN}@commercial)
+exten => _5001,1,Dial(SIP/${EXTEN}, 20)
+exten => _5001,2,VoiceMail(${EXTEN}@direction)
+
+; Numéro de la boite vocale
+exten => 5002,1,VoiceMailMain(${CALLERID(num)}@secretaire)
+
+[ouvrier]
+exten => _0XXX,1,Dial(IAX2/trunk-woodytoys/${EXTEN})
+exten => 5002,1,Dial(SIP/1001, 20)
+exten => 5002,2,VoiceMail(${EXTEN}@secretaire)
+exten => _50XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _80XX,2,VoiceMail(${EXTEN}@ouvrier)
+exten => 30,1,Dial(SIP/1201&SIP/1301, 20)
+exten => 30,2,VoiceMail(${EXTEN}@comptables)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _70XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _70XX,2,VoiceMail(${EXTEN}@commercial)
+exten => _5002,1,Dial(SIP/1001, 20)
+exten => _5002,2,VoiceMail(1001@secretaire)
+
+exten => 8000,1,VoiceMailMain(${CALLERID(num)}@ouvrier)
+
+[comptable]
+exten => _0XXX,1,Dial(IAX2/trunk-woodytoys/${EXTEN})
+exten => 5002,1,Dial(SIP/1001, 20)
+exten => 5002,2,VoiceMail(${EXTEN}@secretaire)
+exten => _80XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _80XX,2,VoiceMail(${EXTEN}@ouvrier)
+exten => 30,1,Dial(SIP/1201&SIP/1301, 20)
+exten => 30,2,VoiceMail(${EXTEN}@comptables)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _70XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _70XX,2,VoiceMail(${EXTEN}@commercial)
+exten => _5002,1,Dial(SIP/1001, 20)
+exten => _5002,2,VoiceMail(1001@secretaire)
+
+exten => 6001,1,VoiceMailMain(${CALLERID(num)}@comptable)
+
+[commercial]
+exten => _0XXX,1,Dial(IAX2/trunk-woodytoys/${EXTEN})
+exten => 1001,1,Dial(SIP/1001, 20)
+exten => 5002,2,VoiceMail(${EXTEN}@secretaire)
+exten => _80XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _80XX,2,VoiceMail(${EXTEN}@ouvrier)
+exten => 30,1,Dial(SIP/1201&SIP/1301, 20)
+exten => 30,2,VoiceMail(${EXTEN}@comptables)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _70XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _70XX,2,VoiceMail(${EXTEN}@commercial)
+
+exten => 7001,1,VoiceMailMain(${CALLERID(num)}@commercial)
+
+[direction]
+exten => _0XXX,1,Dial(IAX2/trunk-woodytoys/${EXTEN})
+exten => 5002,1,Dial(SIP/1001, 20)
+exten => 5002,2,VoiceMail(${EXTEN}@secretaire)
+exten => _80XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _80XX,2,VoiceMail(${EXTEN}@ouvrier)
+exten => 30,1,Dial(SIP/1201&SIP/1301, 20)
+exten => 30,2,VoiceMail(${EXTEN}@comptables)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _60XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _60XX,2,VoiceMail(${EXTEN}@comptable)
+exten => _70XX,1,Dial(SIP/${EXTEN}, 20)
+exten => _70XX,2,VoiceMail(${EXTEN}@commercial)
+exten => _5001,1,Dial(SIP/${EXTEN}, 20)
+exten => _5001,2,VoiceMail(${EXTEN}@direction)
+
+exten => 5001,1,VoiceMailMain(${CALLERID(num)}@direction)

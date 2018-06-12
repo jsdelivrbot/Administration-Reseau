@@ -1,0 +1,33 @@
+;Fichier de zone
+
+$TTL 3600
+$ORIGIN wt4.ephec-ti.be.
+@                IN      SOA     ns1.wt4.ephec-ti.be. filippsh.wt4.ephec-ti.be. (
+                         201804231 ; Serial
+                         3H ; Refresh
+                         30M ; Retry
+                         2W ; Expire
+                         6H ) ; Minimum TTL
+;
+
+@                IN      NS      ns1.wt4.ephec-ti.be.
+
+
+ns1              IN      A       54.37.65.108
+mail             IN      A       54.37.65.108
+web              IN      A       54.37.65.108
+wwwSite          IN      CNAME   web
+Intranet         IN      CNAME   web
+B2B              IN      CNAME   web
+wt4.ephec-ti.be. IN      MX     10   mail.wt4.ephec-ti.be
+mail.wt4.ephec-ti.be. IN A       54.37.65.108
+smtp             IN      CNAME   mail
+pop3             IN      CNAME   mail
+imap             IN      CNAME   mail
+mail._domainkey  IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
+          "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtJ9fM6HXxQeibpCdb6znoAGOxRea9RIRFFTd/u4WjfOkHaaHSG5hDtqvJ5fGrZxIfXCguUFkxeRELGNwnjCMe0a6EeNPfFu65vj4XJ7m2K7LN19cR9pJfSg7o3QgE1zzU2dz6w+4QXYL1GTAavur5VogBXO3svkw+kB8/h0oC3VZ8B9l3bRN23tjuTnZIjxutLbE6Pfvm6sl+e"
+          "07R5e7u56mB+zrWLPv5tWBwmxElZAxJ/NuJxHHjcUg6DHgGgnefneUqyn3W3u5t9ks+LbG6jG7dhfm//GsA4BlL9sVmrLUJBD9dww4SDcuMb0ehNW9X2FGCjl/sqPciSiTU+QCSQIDAQAB" )
+; ----- DKIM key mail for wt4.ephec-ti.be
+
+_dmarc          IN      TXT     ("v=DMARC1;p=none;sp=reject;pct=20;"
+        "adkim=r;aspf=r")

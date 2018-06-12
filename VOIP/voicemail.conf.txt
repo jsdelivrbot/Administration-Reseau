@@ -1,0 +1,23 @@
+
+[General]
+maxmsg=100          ; Nombre max de message sur la Voicemail. Si elle est pleine, il n'est pas possible de rajouter des messages
+maxsecs=0           ; Dur  e max d'un message. "0" = pas de limite
+minsecs=2           ; Dur  e minimum d'un message
+maxlogins=3         ; Nombre max d'erreur de login
+review=no           ; Permet    |  l'appelant de r    couter son message avant de le transmettre    |  la Voicmail. Accessible en terminant le message par #
+saycid=no           ; Dicte le num  ro de l'appelant avant de jouer le message qu'il a laiss
+
+[direction]
+5001 => , Directeur
+5002 => , Secretaire
+
+[comptable]
+6001 => , Comptable 1
+6002 => , Comptable 2
+
+[commercial]
+7001 => , Commercial 1
+7002 => , Commercial 2
+
+[ouvrier]
+8000 => , Atelier

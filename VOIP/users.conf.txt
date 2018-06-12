@@ -1,0 +1,35 @@
+
+[general]
+fullname = New User
+userbase = 6000
+hasvoicemail = yes
+vmsecret = 1234
+hassip = yes
+hasiax = yes
+hasmanager = no
+callwaiting = yes
+threewaycalling = yes
+callwaitingcallerid = yes
+transfer = yes
+canpark = yes
+cancallforward = yes
+callreturn = yes
+callgroup = 1
+pickupgroup = 1
+nat = yes
+
+[share](!)
+ type=friend                    ; Type d'objet SIP (friend = utilisateur)
+host=dynamic                    ; Vous pouvez vous connecter a ce compte SIP a partir de n’importe quelle adresse IP
+dtmfmode=rfc2833                ; Mode du DTMF
+disallow=all                    ; Désactier tous les codecs
+allow=ulaw                      ; Activer les codecs µlaw
+context = work                  ; Contexte (exploité par le fichier extensions.conf
+
+
+;nouveau utilisateur
+
+[6001](template)                ; Numéro SIP et template utilisé
+fullname = Fred Dubois          ; Nom complet de l'utilisateur (ce qui s'affichera sur le téléphone)
+username = FDubois                      ; Nom d'utilisateur
+secret=secret                   ; Mot de passe

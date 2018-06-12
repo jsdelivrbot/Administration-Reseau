@@ -1,0 +1,33 @@
+server {
+    listen 80;
+    root /usr/share/nginx/html/www;
+    index index.html index.html wwwSite.html;
+    server_name www.wt4.ephec-ti.be;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+
+server {
+    listen 80;
+    root /usr/share/nginx/html/b2b;
+    index index.html index.html B2B.html
+    server_name b2b.wt4.ephec-ti.be;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+server {
+    listen 80;
+    root /usr/share/nginx/html/intranet;
+    index index.html index.htm Intranet.html;
+    server_name intranet.wt4.ephec-ti.be;
+
+    location / {
+        allow 54.37.65.108;
+        deny all;
+        try_files $uri $uri/ =404;
+    }
+}

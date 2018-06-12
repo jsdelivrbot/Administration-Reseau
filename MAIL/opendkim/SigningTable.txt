@@ -1,0 +1,3 @@
+
+*@mail.be mail._domainkey.mail.be
+*@wt4.ephec-ti.be mail._domainkey.wt4.ephec-ti.be
